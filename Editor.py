@@ -1,6 +1,6 @@
 import GlobalVar as Gbl
-import pygame
 import numpy as np
+import pygame
 pygame.init()
 
 
@@ -18,26 +18,22 @@ def draw_box(xpos, ypos, xsize, ysize):
     return box_rect
 
 
+def toolbar():
+    pass
+    # add_icon = pygame.image.load("Icons/add.png")
+
+
 def render():
     Gbl.window.fill(Gbl.colour['white'])
-    draw_text("Empire", 72, 100)  # ==Title==
-    play_box = draw_box(-50, -25, 100, 50)  # ==Play Box==
-    draw_text("Play", 46)  # ==Play==
-    editor_box = draw_box(-65, 45, 130, 50)  # ==Editor Box==
-    draw_text("Editor", 46, -70)
-    settings_box = draw_box(-80, 115, 160, 50)  # ==Settings Box==
-    draw_text("Settings", 46, -140)  # ==Settings==
-    return play_box, editor_box, settings_box
+    menu_box = draw_box(-50, -25, 100, 50)  # ==Menu Box==
+    draw_text("Menu", 46)  # ==Menu==
+    return menu_box
 
 
 def button_events(mouse_pos):
     """Handles mouse click button events"""
-    if play_box.collidepoint(mouse_pos):
-        print("Play")  # TODO return
-    elif editor_box.collidepoint(mouse_pos):
-        Gbl.state = 'editor'
-    elif settings_box.collidepoint(mouse_pos):
-        print("Settings")
+    if menu_box.collidepoint(mouse_pos):
+        Gbl.state = "main_menu"
 
-play_box, editor_box, settings_box = render()
 
+menu_box = render()
